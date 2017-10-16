@@ -27,4 +27,7 @@ for row in table.findAll('tr'):
         text = cell.text.replace('&nbsp;', '')
         list_of_cells.append(text)
     list_of_rows.append(list_of_cells)
-print list_of_rows
+
+outfile = open("./inmaes.csv", "wb")
+writer = csv.writer(outfile)
+writer.writerows(list_of_rows)
