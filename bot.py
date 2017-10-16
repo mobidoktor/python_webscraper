@@ -8,4 +8,9 @@ html = response.content
 
 soup = BeautifulSoup(html)
 table = soup.find('tbody', attrs={'class': 'stripe'})
-print table.prettify()
+# print table.prettify()
+# Through printing of the table we're going
+#  to create a loop to go through the rows. 
+
+for row in table.findAll('tr'):
+    print row.prettify()
