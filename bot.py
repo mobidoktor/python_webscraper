@@ -16,4 +16,6 @@ for row in table.findAll('tr'):
     # print row.prettify()
 # Starting to get more specific.
     for cell in row.findAll('td'):
-        print cell.text
+        # print cell.text
+# Trick to remove the annoying non breaking spaces
+        print cell.text.replace('&nbsp;', '')
