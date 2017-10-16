@@ -13,4 +13,7 @@ table = soup.find('tbody', attrs={'class': 'stripe'})
 #  to create a loop to go through the rows. 
 
 for row in table.findAll('tr'):
-    print row.prettify()
+    # print row.prettify()
+# Starting to get more specific.
+    for cell in row.findAll('td'):
+        print cell.text
