@@ -21,13 +21,14 @@ table = soup.find('tbody', attrs={'class': 'stripe'})
 # # Trick to remove the annoying non breaking spaces
 #         print cell.text.replace('&nbsp;', '')
 list_of_rows = []
-for row in table.findAll('tr'):
+for row in table.findAll('tr')[1:]:
     list_of_cells = []
     for cell in row.findAll('td'):
         text = cell.text.replace('&nbsp;', '')
         list_of_cells.append(text)
     list_of_rows.append(list_of_cells)
 
-outfile = open("./inmaes.csv", "wb")
+outfile = open("./inmates.csv", "wb")
 writer = csv.writer(outfile)
+writer.writerow(["Last", "First", "Middle", "Gender", "Race", "Age", "City", "State"])
 writer.writerows(list_of_rows)
