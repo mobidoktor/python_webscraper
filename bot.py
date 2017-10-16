@@ -1,3 +1,4 @@
+import csv
 import requests
 from BeautifulSoup import BeautifulSoup
 
@@ -12,10 +13,16 @@ table = soup.find('tbody', attrs={'class': 'stripe'})
 # Through printing of the table we're going
 #  to create a loop to go through the rows. 
 
+# for row in table.findAll('tr'):
+#     # print row.prettify()
+# # Starting to get more specific.
+#     for cell in row.findAll('td'):
+#         # print cell.text
+# # Trick to remove the annoying non breaking spaces
+#         print cell.text.replace('&nbsp;', '')
 for row in table.findAll('tr'):
-    # print row.prettify()
-# Starting to get more specific.
+    list_of_cells = []
     for cell in row.findAll('td'):
-        # print cell.text
-# Trick to remove the annoying non breaking spaces
-        print cell.text.replace('&nbsp;', '')
+        text = cell.text.replace('&nbsp;', '')
+        list_of_cells.append(text)
+    print list_of_cells
